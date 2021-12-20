@@ -4,14 +4,11 @@ import mysql.connector
 from pprint import pprint
 from discord.ext.commands import Bot
 
-# user : root
-# password : 0000000000
-# usr = input("username : ")
-# pwd = input("password : ")
-usr = "root"
-pwd = "0000000000"
-bot = Bot(command_prefix='')
-TOKEN = "ODcwNTE0ODEyMDA0NzU3NTU2.YQN4GA.Kb3L26iP-MfPdutRIfKN0OmUYYc"
+
+usr = input("username : ")
+pwd = input("password : ")
+bot = Bot(command_prefix='.')
+TOKEN = input("token : ")
 
 mydb = mysql.connector.connect(
     host="localhost",
