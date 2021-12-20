@@ -3,8 +3,6 @@
 import mysql.connector
 from pprint import pprint
 
-# user : root
-# password : 0000000000
 usr = input("username : ")
 pwd = input("password : ")
 
