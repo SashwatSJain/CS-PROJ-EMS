@@ -5,10 +5,12 @@ from pprint import pprint
 from discord.ext.commands import Bot
 
 
-usr = input("username : ")
-pwd = input("password : ")
+# usr = input("username : ")
+# pwd = input("password : ")
+usr = "root"
+pwd = "0000000000"
 bot = Bot(command_prefix='.')
-TOKEN = input("token : ")
+TOKEN = "ODcwNTE0ODEyMDA0NzU3NTU2.YQN4GA.bxU1MSSDKmcbcUQ7psksGgv-tYY"
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -101,5 +103,6 @@ while True:
                 elif message.content.startswith("remove "):
                     mycursor.execute(f"delete from employees where id = {int(message.content[7:])};")
                     mydb.commit()
+
 
             bot.run(TOKEN)
