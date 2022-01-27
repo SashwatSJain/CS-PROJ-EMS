@@ -10,7 +10,7 @@ from discord.ext.commands import Bot
 usr = "root"
 pwd = "0000000000"
 bot = Bot(command_prefix='.')
-TOKEN = "ODcwNTE0ODEyMDA0NzU3NTU2.YQN4GA.bxU1MSSDKmcbcUQ7psksGgv-tYY"
+TOKEN = "--DISCORD-TOKEN--"
 
 mydb = mysql.connector.connect(
     host="localhost",
