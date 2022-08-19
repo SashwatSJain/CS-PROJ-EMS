@@ -24,7 +24,7 @@ mydb = mysql.connector.connect(
 
 print(mydb)
 mycursor = mydb.cursor()
-
+# creating database and table
 mycursor.execute("create database if not exists main;")
 mycursor.execute("use main;")
 mycursor.execute(
@@ -34,6 +34,7 @@ mycursor.execute(
 
 
 def new_staff(m):
+    # function to register new staff
     a = int(input("id(int) : "))
     b = str(input("name : "))
     c = int(input("salary(int) : "))
@@ -49,7 +50,7 @@ def new_staff(m):
         print("integrity error - employee not registered")
 
 def edit_details(m):
-
+    # function to edit employee details
     a = int(input("id(int) : "))
     m.execute(f"select * from employees where id = {a}")
     myresult = m.fetchall()
@@ -73,6 +74,7 @@ def edit_details(m):
 
 
 def full_table(m):
+    # function to display full table
     m.execute(f"select * from employees;")
     myresult = m.fetchall()
     tbl = "[   id |       name       |      salary     |  position  |phoneNumber |  startYear |   department  ]"
@@ -84,6 +86,7 @@ def full_table(m):
 
 
 def filteredtable(m):
+    # function to display filtered table based on salary, start year, and department
     print("""
 * * * * * * * * * * * * * * * 
 *  1. full table            *
@@ -126,6 +129,7 @@ def filteredtable(m):
 
 
 def find_staff(m):
+    # function to find employee based on name or id
     opt = int(input("Search by : \n1.Name \n2.ID \nEnter Choice :"))
 
     if opt == 2:
@@ -145,6 +149,7 @@ def find_staff(m):
 
 
 def employee_exists(m, a):
+    # function to check if employee exists
     m.execute(f"select * from employees where id = {a}")
     myresult = m.fetchall()
     if myresult:
@@ -153,6 +158,7 @@ def employee_exists(m, a):
         return False
 
 def remove_staff(m):
+    # function to remove employee from database
     a = int(input("id(int) : "))
     if employee_exists(m, a):
         m.execute(f"select * from employees where id = {a}")
@@ -169,6 +175,7 @@ def remove_staff(m):
             print("Employee not removed")
     else:
         print("Employee not found")
+
 start()
 
 while True:
@@ -194,4 +201,3 @@ while True:
         break
     else:
         print("invalid option selected")
-
