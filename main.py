@@ -1,5 +1,6 @@
 import mysql.connector
 
+
 def start():
     # print(a)
     print("*" * 89)
@@ -32,7 +33,6 @@ mycursor.execute(
     "har(20), startyear varchar(11) NOT NULL,department VARCHAR(30) NOT NULL, primary key (id, phoneNumber) );")
 
 
-
 def new_staff(m):
     # function to register new staff
     a = int(input("id(int) : "))
@@ -44,10 +44,12 @@ def new_staff(m):
     g = str(input("department : "))
 
     try:
-        m.execute(f"insert into employees values ({a}, '{b}', {c}, '{d}', {e} , '{f}' , '{g}' );")
+        m.execute(
+            f"insert into employees values ({a}, '{b}', {c}, '{d}', {e} , '{f}' , '{g}' );")
         mydb.commit()
     except mysql.connector.errors.IntegrityError:
         print("integrity error - employee not registered")
+
 
 def edit_details(m):
     # function to edit employee details
@@ -57,7 +59,7 @@ def edit_details(m):
     if myresult:
         for x in myresult:
             print(f"\nid :{x[0]}\nname : {x[1]}\nsalary : {x[2]}\nposition : {x[3]}\nphoneNumber : {x[4]}\nstartyear : {x[5]}"
-                f"\ndepartment : {x[6]}")
+                  f"\ndepartment : {x[6]}")
 
         b = str(input("name : "))
         c = int(input("salary(int) : "))
@@ -66,7 +68,8 @@ def edit_details(m):
         f = str(input("start year : "))
         g = str(input("department : "))
 
-        m.execute(f"update employees set name='{b}', salary={c}, position='{d}', phoneNumber={e}, startYear='{f}', department='{g}' where id={a};")
+        m.execute(
+            f"update employees set name='{b}', salary={c}, position='{d}', phoneNumber={e}, startYear='{f}', department='{g}' where id={a};")
         mydb.commit()
         print("Employee Details Updated")
     else:
@@ -157,6 +160,7 @@ def employee_exists(m, a):
     else:
         return False
 
+
 def remove_staff(m):
     # function to remove employee from database
     a = int(input("id(int) : "))
@@ -165,7 +169,7 @@ def remove_staff(m):
         myresult = m.fetchall()
         for x in myresult:
             print(f"\nid :{x[0]}\nname : {x[1]}\nsalary : {x[2]}\nposition : {x[3]}\nphoneNumber : {x[4]}\nstartyear : {x[5]}"
-                f"\ndepartment : {x[6]}")
+                  f"\ndepartment : {x[6]}")
         b = str(input("Are you sure you want to remove this employee? (y/n) : "))
         if b == "y":
             m.execute(f"delete from employees where id = {a}")
@@ -175,6 +179,7 @@ def remove_staff(m):
             print("Employee not removed")
     else:
         print("Employee not found")
+
 
 start()
 
