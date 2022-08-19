@@ -1,0 +1,1 @@
+[![Python Version](https://img.shields.io/static/v1.svg?label=Python&message=3.x&color=blue)]()
